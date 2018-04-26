@@ -15,12 +15,47 @@ I'm not sure the best way of doing this other than going to the Mills and Boon l
 ```python
 python scrape.py
 ```
+If you've not run the code before the results will be saved in a pkl file in the repo directory. Takes about 5 mins or so to perform the scraping, and a similar length of time to process the giant word lists.
 
 ## Results
-The results presented here ignore common boring words like 'the' and 'a'. A limitation in these results is that I don't group different versions of the same word (e.g. 'Witch'/'Witches').
+The results presented here ignore common boring words like 'the' and 'a'. A limitation in these results is that I don't group different versions of the same word (e.g. 'Witch'/'Witches'). A total of 23,285 books were found and analysed, although some were missing descriptions.
 
 ### Book title
 
 | Word        | Frequency           | 
 | ------------- |:-------------:| 
-|          |               |
+| Bride | 1151 |
+| Her | 1101 |
+| His | 1095 |
+| Christmas | 1009 |
+| Baby | 1006 |
+| Secret | 702 |
+| Marriage | 513 |
+| Cowboy | 490 |
+| Wife | 445 |
+| Cowboy | 490 |
+| One | 429 |
+| Night | 406 |
+| Mistress | 398 |
+| Family | 388 |
+| Love | 375 |
+
+### Book description
+
+| Word        | Frequency           | 
+| ------------- |:-------------:| 
+| Bride | 1151 |
+| Her | 1101 |
+| His | 1095 |
+| Christmas | 1009 |
+| Baby | 1006 |
+| Secret | 702 |
+| Marriage | 513 |
+| Cowboy | 490 |
+| Wife | 445 |
+| Cowboy | 490 |
+| One | 429 |
+| Night | 406 |
+| Mistress | 398 |
+| Family | 388 |
+| Love | 375 |

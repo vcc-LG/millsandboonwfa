@@ -5,6 +5,7 @@ import pickle
 from pathlib import Path
 import sys
 sys.setrecursionlimit(100000)
+import re
 
 def get_soup(response):
     try:
@@ -72,8 +73,12 @@ def request_params(page_number):
     return params
 
 def analyse_word_frequency_in_dict_list(dict_list, key):
-    list_of_vals = [d[key] for d in dict_list]
-    split_string_from_vals = ' '.join(list_of_vals).split(' ')
+    list_of_vals = [str(d[key]) for d in dict_list]
+    try:
+        joined_list_of_vals = ' '.join(list_of_vals)
+        split_string_from_vals = re.findall(r"[\w']+|[.,!?;]", joined_list_of_vals)
+    except TypeError:
+        import ipdb; ipdb.set_trace()
     wordfreq = [split_string_from_vals.count(p) for p in split_string_from_vals]
     return dict(zip(split_string_from_vals,wordfreq))
 
@@ -139,9 +144,9 @@ if __name__ == "__main__":
 
     print('found {} books'.format(len(list_of_dicts)))
 
-    title_word_list_dict = analyse_word_frequency_in_dict_list(list_of_dicts,'title')
-    title_sorted_list = sort_frequency_dict(title_word_list_dict)
-    for s in title_sorted_list: print(str(s))
+    # title_word_list_dict = analyse_word_frequency_in_dict_list(list_of_dicts,'title')
+    # title_sorted_list = sort_frequency_dict(title_word_list_dict)
+    # for s in title_sorted_list: print(str(s))
 
     description_word_list_dict = analyse_word_frequency_in_dict_list(list_of_dicts,'description')
     description_sorted_list = sort_frequency_dict(description_word_list_dict)
