@@ -88,25 +88,26 @@ def sort_frequency_dict(freqdict):
     aux.reverse()
     return aux
 
-def save_data(list_of_dicts):
-    with open('results.pkl', 'wb') as f:
+def save_data(list_of_dicts, filename):
+    with open(filename, 'wb') as f:
         pickle.dump(list_of_dicts, f)
 
-def check_if_data_exists():
-    my_file = Path("results.pkl")
+def check_if_data_exists(filename):
+    my_file = Path(filename)
     if my_file.is_file():
         return True
     else:
         return False
 
-def load_data():
-    with open('results.pkl','rb') as f:
+def load_data(filename):
+    with open(filename,'rb') as f:
         list_of_dicts = pickle.load(f)
     return list_of_dicts
 
 if __name__ == "__main__":
-    if check_if_data_exists():
-        list_of_dicts = load_data()
+    filename = 'results.pkl'
+    if check_if_data_exists(filename):
+        list_of_dicts = load_data(filename)
     else:
         cookies = {'ASP.NET_SessionId': '',
                 'SessionId': '',
@@ -140,14 +141,16 @@ if __name__ == "__main__":
                 list_of_dicts.append(temp_dict)
                 #pprint(temp_dict)
 
-        save_data(list_of_dicts)
+        save_data(list_of_dicts, 'results.pkl')
 
     print('found {} books'.format(len(list_of_dicts)))
 
-    # title_word_list_dict = analyse_word_frequency_in_dict_list(list_of_dicts,'title')
-    # title_sorted_list = sort_frequency_dict(title_word_list_dict)
-    # for s in title_sorted_list: print(str(s))
+    title_word_list_dict = analyse_word_frequency_in_dict_list(list_of_dicts,'title')
+    title_sorted_list = sort_frequency_dict(title_word_list_dict)
+    for s in title_sorted_list: print(str(s))
+    save_data(title_sorted_list, 'title_data.pkl')    
 
     description_word_list_dict = analyse_word_frequency_in_dict_list(list_of_dicts,'description')
     description_sorted_list = sort_frequency_dict(description_word_list_dict)
     for s in description_sorted_list: print(str(s))
+    save_data(title_sorted_list, 'description_data.pkl')    
