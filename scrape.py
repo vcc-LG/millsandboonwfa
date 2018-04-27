@@ -7,7 +7,7 @@ import sys
 sys.setrecursionlimit(100000)
 import re
 from collections import Counter
-
+import datetime
 
 def get_soup(response):
     try:
@@ -37,11 +37,18 @@ def get_published_date(el):
     try:
         date_string = el.find_all(text="Published:")[
             0].parent.parent.contents[1]
+        date_object = parse_date_from_string(date_string)
     except:
         print('could not find date string in element')
         return ""
-    return date_string
+    return date_object
 
+def parse_date_from_string(date):
+    try:
+        date = datetime.datetime.strptime(date, '%b %Y')
+    except:
+        print('could not parse date string')
+    return date
 
 def get_description(el):
     try:
@@ -51,7 +58,6 @@ def get_description(el):
         return ""
     return description
 
-
 def get_title(el):
     try:
         title = el.find_all(class_='title group')[0].contents[1].contents[0]
@@ -59,7 +65,6 @@ def get_title(el):
         print('could not get title from element')
         return ""
     return title
-
 
 def request_params(page_number):
     params = (('mode', 'all'),
@@ -100,9 +105,42 @@ def load_data(filename):
         list_of_dicts = pickle.load(f)
     return list_of_dicts
 
+def get_list_of_items_in_date(dict_list,month_int,year):
+    list_of_items_in_date = []
+    try:
+        list_of_items_in_date = [item for item in dict_list if item['published_date'] == datetime.datetime(year,month_int,1,0,0)]
+    except:
+        print('could not get items in that date')
+    return list_of_items_in_date
+
+def get_word_freq_by_date(dict_list):
+    month_range = range(1,13)
+    year_range = range(2007,2018+1)
+    output_dict_list_title = []
+    output_dict_list_description = []
+
+    for year in year_range:
+        for month in month_range:
+            wfa_list = get_list_of_items_in_date(dict_list,month,year)
+            if len(wfa_list) > 0:
+                wfa_list_by_title = analyse_word_frequency_in_dict_list(wfa_list, 'title')
+                temp_dict = {}
+                temp_dict['published_date'] = datetime.datetime(year,month,1,0,0)
+                temp_dict['wfa_list'] = wfa_list_by_title
+                output_dict_list_title.append(temp_dict)
+
+                wfa_list_by_description = analyse_word_frequency_in_dict_list(wfa_list, 'description')
+                temp_dict = {}
+                temp_dict['published_date'] = datetime.datetime(year,month,1,0,0)
+                temp_dict['wfa_list'] = wfa_list_by_description
+                output_dict_list_description.append(temp_dict)
+    return output_dict_list_title, output_dict_list_description
+
+
 if __name__ == "__main__":
     filename = 'results.pkl'
     if check_if_data_exists(filename):
+        print('loading pre-existing data')
         list_of_dicts = load_data(filename)
     else:
         cookies = {'ASP.NET_SessionId': '',
@@ -148,3 +186,5 @@ if __name__ == "__main__":
     description_wfa = analyse_word_frequency_in_dict_list(list_of_dicts,'description')
     for s in description_wfa[1:21]: print(str(s))
     save_data(description_wfa, 'description_data.pkl')    
+
+    title_date_wfa, description_date_wfa = get_word_freq_by_date(list_of_dicts)
