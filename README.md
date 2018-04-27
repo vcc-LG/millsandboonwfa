@@ -18,39 +18,55 @@ python scrape.py
 If you've not run the code before the results will be saved in a pkl file in the repo directory. Takes about 5 mins or so to perform the scraping, and a similar length of time to process the giant word lists.
 
 ## Results
-The results presented here ignore common boring words like 'the' and 'a'. A limitation in these results is that I don't group different versions of the same word (e.g. 'Witch'/'Witches'). A total of 23,285 books were found and analysed, although some were missing descriptions.
+The results presented here ignore common boring words like 'the' and 'a' using the nltk corpus. A limitation in these results is that I don't group different versions of the same word (e.g. 'Witch'/'Witches'). A total of 23,285 books were found and analysed, although some were missing descriptions.
 
 ### Book title
 
 | Word        | Frequency           | 
 | ------------- |:-------------:| 
-| Bride | 1181 |
-| Her | 1091 |
-| Baby | 1073 |
-| His | 1063 |
-| Christmas | 1061 |
-| Secret | 693 |
-| Marriage | 530 |
-| Cowboy | 481 |
-| Love | 480 |
-| Night | 477 |
-| Wife | 466 |
-| One | 461 |
+|baby| 1081|
+|christmas| 1069|
+|secret| 692|
+|marriage| 534|
+|cowboy| 481|
+|love| 481|
+|night| 472|
+|one| 467|
+|wife| 466|
+|mistress| 443|
+|family| 386|
+|wedding| 352|
+|man| 341|
+|heart| 334|
+|child| 267|
+|boss| 264|
+|texas| 264|
+|proposal| 256|
+|seduction| 240|
+|pregnant| 226|
+
 
 ### Book description
 
 | Word        | Frequency           | 
 | ------------- |:-------------:| 
-| Her | 12001 |
-| His | 6928 |
-| She | 6382 |
-| He | 5116 |
-| But | 4714 |
-| One | 2541 |
-| Life | 1902 |
-| New | 1847 |
-| Man | 1759 |
-| Love | 1531 |
-| All | 1485 |
-| After | 1413 |
-| Never | 1411 |
+|life| 1901|
+|new| 1878|
+|man| 1764|
+|love| 1531|
+|never| 1410|
+|family| 1366|
+|years| 1200|
+|woman| 1086|
+|baby| 967|
+|home| 940|
+|back| 879|
+|night| 866|
+|could| 836|
+|two| 784|
+|marriage| 780|
+|time| 769|
+|father| 766|
+|would| 755|
+|town| 743|
+|christmas| 742|

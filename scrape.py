@@ -8,6 +8,9 @@ sys.setrecursionlimit(100000)
 import re
 from collections import Counter
 import datetime
+import nltk
+nltk.download('stopwords')
+stopwords = set(nltk.corpus.stopwords.words('english'))
 
 def get_soup(response):
     try:
@@ -85,9 +88,10 @@ def analyse_word_frequency_in_dict_list(dict_list, key):
         joined_list_of_vals = ' '.join(set(list_of_vals))
         split_string_from_vals = re.findall(r"[\w']+|[.,!?;]", joined_list_of_vals)
         word_list_alnum = [i for i in split_string_from_vals if i.isalnum()]
+        word_list_alnum_no_stopwords = [i for i in word_list_alnum if not i in stopwords]
     except TypeError:
         import ipdb; ipdb.set_trace()
-    return Counter(word_list_alnum).most_common()
+    return Counter(word_list_alnum_no_stopwords).most_common()
 
 def save_data(list_of_dicts, filename):
     with open(filename, 'wb') as f:
