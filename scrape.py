@@ -6,6 +6,8 @@ from pathlib import Path
 import sys
 sys.setrecursionlimit(100000)
 import re
+from collections import Counter
+
 
 def get_soup(response):
     try:
@@ -73,20 +75,14 @@ def request_params(page_number):
     return params
 
 def analyse_word_frequency_in_dict_list(dict_list, key):
-    list_of_vals = [str(d[key]) for d in dict_list]
+    list_of_vals = [str(d[key]).lower() for d in dict_list]
     try:
-        joined_list_of_vals = ' '.join(list_of_vals)
+        joined_list_of_vals = ' '.join(set(list_of_vals))
         split_string_from_vals = re.findall(r"[\w']+|[.,!?;]", joined_list_of_vals)
+        word_list_alnum = [i for i in split_string_from_vals if i.isalnum()]
     except TypeError:
         import ipdb; ipdb.set_trace()
-    wordfreq = [split_string_from_vals.count(p) for p in split_string_from_vals]
-    return dict(zip(split_string_from_vals,wordfreq))
-
-def sort_frequency_dict(freqdict):
-    aux = [(freqdict[key], key) for key in freqdict]
-    aux.sort()
-    aux.reverse()
-    return aux
+    return Counter(word_list_alnum).most_common()
 
 def save_data(list_of_dicts, filename):
     with open(filename, 'wb') as f:
@@ -145,12 +141,10 @@ if __name__ == "__main__":
 
     print('found {} books'.format(len(list_of_dicts)))
 
-    title_word_list_dict = analyse_word_frequency_in_dict_list(list_of_dicts,'title')
-    title_sorted_list = sort_frequency_dict(title_word_list_dict)
-    for s in title_sorted_list: print(str(s))
-    save_data(title_sorted_list, 'title_data.pkl')    
+    title_wfa = analyse_word_frequency_in_dict_list(list_of_dicts,'title')
+    for s in title_wfa[1:21]: print(str(s))
+    save_data(title_wfa, 'title_data.pkl')    
 
-    description_word_list_dict = analyse_word_frequency_in_dict_list(list_of_dicts,'description')
-    description_sorted_list = sort_frequency_dict(description_word_list_dict)
-    for s in description_sorted_list: print(str(s))
-    save_data(title_sorted_list, 'description_data.pkl')    
+    description_wfa = analyse_word_frequency_in_dict_list(list_of_dicts,'description')
+    for s in description_wfa[1:21]: print(str(s))
+    save_data(description_wfa, 'description_data.pkl')    

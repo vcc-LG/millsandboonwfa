@@ -24,33 +24,33 @@ The results presented here ignore common boring words like 'the' and 'a'. A limi
 
 | Word        | Frequency           | 
 | ------------- |:-------------:| 
-| Bride | 1151 |
-| Her | 1101 |
-| His | 1095 |
-| Christmas | 1009 |
-| Baby | 1006 |
-| Secret | 702 |
-| Marriage | 513 |
-| Cowboy | 490 |
-| Wife | 445 |
-| One | 429 |
-| Night | 406 |
-| Mistress | 398 |
-| Family | 388 |
-| Love | 375 |
+| Bride | 1181 |
+| Her | 1091 |
+| Baby | 1073 |
+| His | 1063 |
+| Christmas | 1061 |
+| Secret | 693 |
+| Marriage | 530 |
+| Cowboy | 481 |
+| Love | 480 |
+| Night | 477 |
+| Wife | 466 |
+| One | 461 |
 
 ### Book description
 
 | Word        | Frequency           | 
 | ------------- |:-------------:| 
-| Her | 11230 |
-| His | 6265 |
-| She | 5104 |
-| He | 3975 |
-| One | 2274 |
-| When | 2182 |
-| From | 2110 |
-| Life | 1868 |
-| Man | 1497 |
-| Love | 1387 |
-| Never | 1303 |
+| Her | 12001 |
+| His | 6928 |
+| She | 6382 |
+| He | 5116 |
+| But | 4714 |
+| One | 2541 |
+| Life | 1902 |
+| New | 1847 |
+| Man | 1759 |
+| Love | 1531 |
+| All | 1485 |
+| After | 1413 |
+| Never | 1411 |
