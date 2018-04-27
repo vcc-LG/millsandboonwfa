@@ -24,6 +24,7 @@ The results presented here ignore common boring words like 'the' and 'a' using t
 
 | Word        | Frequency           | 
 | ------------- |:-------------:| 
+|bride| 1194|
 |baby| 1081|
 |christmas| 1069|
 |secret| 692|
@@ -50,6 +51,7 @@ The results presented here ignore common boring words like 'the' and 'a' using t
 
 | Word        | Frequency           | 
 | ------------- |:-------------:| 
+|one| 2544|
 |life| 1901|
 |new| 1878|
 |man| 1764|

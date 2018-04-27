@@ -184,11 +184,11 @@ if __name__ == "__main__":
     print('found {} books'.format(len(list_of_dicts)))
 
     title_wfa = analyse_word_frequency_in_dict_list(list_of_dicts,'title')
-    for s in title_wfa[1:21]: print(str(s))
+    for s in title_wfa[0:21]: print(str(s))
     save_data(title_wfa, 'title_data.pkl')    
 
     description_wfa = analyse_word_frequency_in_dict_list(list_of_dicts,'description')
-    for s in description_wfa[1:21]: print(str(s))
+    for s in description_wfa[0:21]: print(str(s))
     save_data(description_wfa, 'description_data.pkl')    
 
     title_date_wfa, description_date_wfa = get_word_freq_by_date(list_of_dicts)
