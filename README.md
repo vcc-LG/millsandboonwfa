@@ -33,7 +33,6 @@ The results presented here ignore common boring words like 'the' and 'a'. A limi
 | Marriage | 513 |
 | Cowboy | 490 |
 | Wife | 445 |
-| Cowboy | 490 |
 | One | 429 |
 | Night | 406 |
 | Mistress | 398 |
@@ -44,18 +43,14 @@ The results presented here ignore common boring words like 'the' and 'a'. A limi
 
 | Word        | Frequency           | 
 | ------------- |:-------------:| 
-| Bride | 1151 |
-| Her | 1101 |
-| His | 1095 |
-| Christmas | 1009 |
-| Baby | 1006 |
-| Secret | 702 |
-| Marriage | 513 |
-| Cowboy | 490 |
-| Wife | 445 |
-| Cowboy | 490 |
-| One | 429 |
-| Night | 406 |
-| Mistress | 398 |
-| Family | 388 |
-| Love | 375 |
+| Her | 11230 |
+| His | 6265 |
+| She | 5104 |
+| He | 3975 |
+| One | 2274 |
+| When | 2182 |
+| From | 2110 |
+| Life | 1868 |
+| Man | 1497 |
+| Love | 1387 |
+| Never | 1303 |
